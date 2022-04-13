@@ -42,19 +42,6 @@ class OTPTextView extends Component {
     this.inputs = [];
   }
 
-  componentDidMount() {
-    setTimeout(() => {
-      this.bringUpKeyBoardIfNeeded();
-    }, 250);
-  }
-
-  bringUpKeyBoardIfNeeded = () => {
-    const { autoFocusOnLoad, inputCount } = this.props;
-    if (inputCount > 0 && autoFocusOnLoad) {
-      this.inputs[0].focus();
-    }
-  };
-
   basicValidation = (text) => {
     const validText = /^[0-9a-zA-Z]+$/;
     return text.match(validText);
@@ -174,7 +161,7 @@ class OTPTextView extends Component {
           key={i}
           autoCorrect={false}
           keyboardType={keyboardType}
-          // autoFocus={i === 0}
+          autoFocus={i == 0 ? true : false}
           value={otpText[i] || ""}
           style={inputStyle}
           maxLength={this.props.inputCellLength}
@@ -202,7 +189,6 @@ OTPTextView.propTypes = {
   handleTextChange: PropTypes.func,
   inputType: PropTypes.string,
   keyboardType: PropTypes.string,
-  autoFocusOnLoad: PropTypes.bool
 };
 
 OTPTextView.defaultProps = {
@@ -215,7 +201,6 @@ OTPTextView.defaultProps = {
   textInputStyle: {},
   handleTextChange: () => { },
   keyboardType: "numeric",
-  autoFocusOnLoad: false
 };
 
 export default OTPTextView;
