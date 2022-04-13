@@ -10,7 +10,6 @@ const styles = StyleSheet.create({
   textInput: {
     height: 50,
     width: 50,
-    borderBottomWidth: 4,
     margin: 5,
     textAlign: "center",
     fontSize: 22,
@@ -89,7 +88,7 @@ class OTPTextView extends Component {
   };
 
   onKeyPress = (e, i) => {
-    const val = this.state.otpText[i] || "";
+    const val = this.state.otpText[i] || "0";
 
     if (e.nativeEvent.key === "Backspace" && i !== 0 && val.length === 1) {
       this.inputs[i - 1].focus();
