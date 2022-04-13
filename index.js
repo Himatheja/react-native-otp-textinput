@@ -42,14 +42,6 @@ class OTPTextView extends Component {
     this.inputs = [];
   }
 
-  componentDidMount() {
-    setTimeout(() => {
-      if(this.inputs && this.inputs.length > 0 && this.props.inputCount > 0) {
-        this.inputs[0].focus();
-      }
-    }, 350);
-  }
-
   basicValidation = (text) => {
     const validText = /^[0-9a-zA-Z]+$/;
     return text.match(validText);
@@ -169,7 +161,7 @@ class OTPTextView extends Component {
           key={i}
           autoCorrect={false}
           keyboardType={keyboardType}
-          autoFocus={false}
+          autoFocus={i == 0 ? true : false}
           value={otpText[i] || ""}
           style={inputStyle}
           maxLength={this.props.inputCellLength}
