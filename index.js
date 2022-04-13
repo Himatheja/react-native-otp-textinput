@@ -43,7 +43,9 @@ class OTPTextView extends Component {
   }
 
   componentDidMount() {
-    this.bringUpKeyBoardIfNeeded();
+    setTimeout(() => {
+      this.bringUpKeyBoardIfNeeded();
+    }, 250);
   }
 
   bringUpKeyBoardIfNeeded = () => {
