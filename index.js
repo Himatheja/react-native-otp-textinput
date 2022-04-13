@@ -40,17 +40,18 @@ class OTPTextView extends Component {
       ),
     };
     this.inputs = [];
-    this.bringUpKeyBoardIfNeeded = () => {
-      const { autoFocusOnLoad, inputCount } = this.props;
-      if (inputCount > 0 && autoFocusOnLoad) {
-        this.inputs[0].focus();
-      }
-    };
   }
 
   componentDidMount() {
     this.bringUpKeyBoardIfNeeded();
   }
+
+  bringUpKeyBoardIfNeeded = () => {
+    const { autoFocusOnLoad, inputCount } = this.props;
+    if (inputCount > 0 && autoFocusOnLoad) {
+      this.inputs[0].focus();
+    }
+  };
 
   basicValidation = (text) => {
     const validText = /^[0-9a-zA-Z]+$/;
